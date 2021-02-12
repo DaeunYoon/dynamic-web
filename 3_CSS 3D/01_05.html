@@ -1,0 +1,35 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Flex Box</title>
+     <style>
+         .box {
+            display: flex;
+             width: 100vw;
+            height: 80vh;
+            background: grey;
+         }
+
+         .items {
+            flex-grow:1;
+            font-size: 2rem;
+            flex-grow:1;
+            flex-basis: 0;
+            /* padding: 5em; */
+            background: white;
+            border: solid 2px black;
+         }
+     </style>
+ </head>
+ <body>
+     <div class="box">
+         <div class="items">AAA</div>
+         <div class="items">B</div>
+         <div class="items">CCCCCC</div>
+         <div class="items">DDD</div>
+         <div class="items">E</div>
+     </div>
+ </body>
+ </html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event delegation</title>
+    <style>
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000000;
+        }
+        .menu-btn{
+            background: linear-gradient(0deg, rgba(223,210,0,1) 0%, rgba(255,240,0,1) 24%, rgba(255,240,0,1) 70%, rgba(255,255,255,1) 100%);
+            width: 180px;
+            height: 100px;
+            margin: 2%;
+            border: solid 5px #ffffff;
+            outline: 0;
+            font: 900 1.2rem NotoSans;
+            border-radius: 10px;
+            box-shadow: rgba(0,0,0,0.1) 0 0 0 1px inset;
+        }
+
+        .btn-label {
+            text-shadow: rgba(0,0,0,0.1) 0 0 0 1px inset;
+            pointer-events: none;
+        }
+        .icon {
+            width: 60px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <button class="menu-btn" data-value="1">
+            <img src="images/ilbuni_1.png" alt="" class="icon">
+            <span class="btn-label">일분이1</span>
+        </button>
+        <button class="menu-btn" data-value="2">
+            <img src="images/ilbuni_2.png" alt="" class="icon">
+            <span class="btn-label">일분이2</span></button>
+        <button class="menu-btn" data-value="3">
+            <img src="images/ilbuni_3.png" alt="" class="icon">
+            <span class="btn-label">일분이3</span>
+        </button>
+    </div>
+
+    <script>
+        (function() {
+        const menu = document.querySelector('.menu');
+            
+        function buttonClick(item) {
+            // console.log(item.getAttribute('data-value'));
+            console.log(item.dataset.value);
+        }
+
+        function clickHandler(e) {
+            let tar = e.target;
+            if(tar.classList.contains('menu-btn')){
+                buttonClick(tar);
+            }
+        }
+
+        menu.addEventListener('click', clickHandler);
+        })(); 
+    </script>
+</body>
+</html>

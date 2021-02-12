@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 3D</title>
+    <style>
+        .world {
+            width: 80vw;
+            height:80vh;
+            background: yellow;
+            perspective: 500px;
+        }
+        .card {
+            position: absolute;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+            left: 50%;
+            top: 50%;
+            margin: -75px 0 0 -50px;
+            width: 100px;
+            height: 150px;
+            border-radius: 0.5em;
+            font-size: 1rem;
+            transition: 1s;
+            backface-visibility: hidden;
+        }
+        .card_front {
+            z-index: 1;
+            background: white;
+        }
+
+        .card_back {
+            background: red;
+            transform: rotateY(180deg);
+       }
+
+       .world:hover .card_front {
+            transform:rotateY(180deg);
+       }
+
+       .world:hover .card_back {
+            transform:rotateY(360deg);
+       }
+
+    </style>
+</head>
+<body>
+    <div class="world">
+        <div class="card card_front">
+            F
+        </div>
+        <div class="card card_back">
+            B
+        </div>
+    </div>
+</body>
+</html>

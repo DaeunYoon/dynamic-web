@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Interactive Web</title>
+    <style>
+        .stage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            background: #333;
+        }
+
+        .door {
+            position: relative;
+            width: 100px;
+            height: 150px;
+        }
+
+        .door-back {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background:black;
+        }
+
+        .ilbuni {            
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-repeat: no-repeat;
+            background-position: 50% 100%;
+            background-size: contain;
+            transform: translate3d(100%,0,0);
+            transition: 0.5s 0.2s;
+            /* outline: 2px dashed red; */
+        }
+
+        .door:nth-child(1) .ilbuni{background-image: url(images/ilbuni_0.png);}
+        .door:nth-child(2) .ilbuni{background-image: url(images/ilbuni_1.png);}
+        .door:nth-child(3) .ilbuni{background-image: url(images/ilbuni_2.png);}
+        .door-body {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform-origin: left;
+            transition: 0.5s;
+        }
+
+        .door:nth-child(1) .door-body{ background: rgba(255, 0,0, 0.7);}
+        .door:nth-child(2) .door-body{ background: rgba(0, 255,0, 0.7);}
+        .door:nth-child(3) .door-body{ background: rgba(0,0,255, 0.7);} 
+        .door-opened .door-body {
+            transform: perspective(800px) rotateY(-110deg);
+        }
+
+        .door-opened .ilbuni {
+            transform: translate3d(0%, 0, 0);
+        }
+</style>
+</head>
+<body>
+    <div class="stage">
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+        <div class="door">
+            <div class="door-back">
+                <div class="ilbuni"></div>
+            </div>
+            <div class="door-body"></div>
+        </div>
+    </div>
+    
+    <script>   
+        (function() {
+            const stage = document.querySelector('.stage');
+            let currentItem = null;
+            //let pre = null;
+
+            /*event handler는 항상 최대한 간단하게! 기능별로 쪼개면 코드가 유연해짐*/
+            // function clickListener(e) {
+            //     let door = e.target;
+
+            //     if(pre && pre.classList.contains('door-opened'))
+            //         pre.classList.remove('door-opened')
+
+            //     while(!door.classList.contains('door')) {
+            //         console.log(door);
+
+                    
+            //         door = door.parentNode;
+            //         if(door.nodeName == 'BODY'){
+            //             return;
+            //         }
+            //     }
+            //     door.classList.add('door-opened');
+                
+            //     pre = door;
+            // }
+
+            function activate(elem) {
+                elem.classList.add('door-opened');
+                currentItem = elem;
+            }
+
+            function inactivate(elem) {
+                elem.classList.remove('door-opened');
+            }
+
+            function clickListener(e) {
+                const targetElem = e.target;
+
+                if (currentItem) {
+                    inactivate(currentItem);
+                }
+
+                if (targetElem.classList.contains('door-body')) {
+                    activate(targetElem.parentNode);
+                }
+            }
+
+            activate(document.querySelector('.door:nth-child(1)'));
+            stage.addEventListener('click', clickListener);
+
+        })();
+    </script>
+
+</body>
+</html>

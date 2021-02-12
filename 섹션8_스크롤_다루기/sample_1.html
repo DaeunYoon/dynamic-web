@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>Interactive Web</title>
+    <style>
+        img {
+            max-width: 100%;
+        }
+
+        .content{
+            height: 1000vh;
+            padding: 20%;
+            background: yellowgreen;
+        }
+
+        .output {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            font-size: 2rem;
+            font-weight: 200;
+            color:#fff;
+            background: rgba(0,0,0,0.4);
+        }
+
+        .ilbuni {
+            width: 100px;
+            margin: 20px auto;
+            transition: 1s;
+        }
+        .ilbuni.zoom {
+            transform: scale(2);
+        }
+    </style>
+</head>
+<body>
+    <div class="output">Output</div>
+    <div class="content">
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed molestias veniam perferendis delectus ut voluptatum repudiandae nulla cumque, fugit, quis tempora animi quidem provident natus facere! Voluptatibus nisi facere nam! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum libero reprehenderit odio ducimus doloremque vel officia saepe dolores est, eveniet placeat exercitationem beatae impedit. Vero repudiandae quae porro adipisci cumque!
+        </p>
+        <figure class="ilbuni">
+            <img src = "./images/ilbuni_0.png" alt="일분이">
+        </figure>
+    </div>
+
+    <script>
+        (function() {
+            const outputElem = document.querySelector('.output');
+            const ilbuniElem = document.querySelector('.ilbuni');
+
+            function printTop() {
+                // outputElem.innerHTML = window.pageYOffset;
+                /*시작 값만 받아옴*/
+                //outputElem.innerHTML = ilbuniElem.offsetTop;
+                let posY = ilbuniElem.getBoundingClientRect().top;
+                outputElem.innerHTML = posY;
+
+                if (posY < window.innerHeight * 0.2) {
+                    ilbuniElem.classList.add('zoom');
+                } else {
+                    ilbuniElem.classList.remove('zoom');
+                }
+            }
+
+            window.addEventListener('scroll', function() {
+                printTop();
+
+            })
+        })();
+    </script>
+</body>
+</html>

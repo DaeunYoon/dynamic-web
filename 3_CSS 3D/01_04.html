@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        .world {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80vw;
+            height: 80vh;
+            background-color: yellow;
+            perspective: 500px;
+        }
+
+        .card {
+            position:relative;
+            width: 100px;
+            height: 150px;
+            margin: 1em;
+            /*0deg는 아무 것도 하지 않는 상태지만 디포트를 지정해주면 컴퓨터가 준비를 할 수 있도록 도와주어서 성능에 도움이 된다고 함(실제로 육안으로 확인은 불가하지만 이론적으로 도움이 된다고함*/
+            transform: rotateY(0deg);
+            transition: 1s;
+            /*인터넷 익스플로러에서는 transform-style 지원안됨*/
+            transform-style: preserve-3d;
+            /*transform-origin 이용해서 회전하는 기준점 변경 가능*/  
+            /*transform-origin: left*/
+            /* transform: perspective(500px) rotateY(40deg); */
+        }
+
+        .card-side {
+            position: absolute;
+            width:100%;
+            height:100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /*em사용한 이유 : 폰트 사이즈가 달라짐에 따라서 border-radius값을 변경하겠다는 의미, 
+            디자인의 의도에 맞춰서 em, rem 사용하면됨*/
+            border-radius: 0.5em;
+            font-size: 1rem;
+            /*두 면을 합쳤을 때, 뒷면 안보이게 해줘야 애니메이션이 깜빡깜빡 하지 않고 정상적으로 작동함*/
+            -webkit-backface-visibility: hidden ; /*사파리에서 정상적으로 지원하기 위해서*/
+            backface-visibility: hidden ; /*표준 속성*/
+        }
+
+        .card-side-front {
+            z-index: 1;
+            background: white;
+        }
+
+        .card-side-back {
+            background: red;
+            transform: rotateY(180deg)
+        }   
+
+        .world:hover .card {
+            transform: rotateY(180deg);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="world">
+        <div class="card">
+            <div class="card-side card-side-front">F</div>
+            <div class="card-side card-side-back">B</div>
+        </div> 
+    </div>   
+</body>
+</html>

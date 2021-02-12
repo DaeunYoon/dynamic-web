@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        @keyframes spaceship-ani {
+            to {
+                background-position: -2550px 0;
+            }
+        }
+        .spaceship {
+            width: 150px;
+            height: 150px;
+            /*background size 구분할때는 / 넣어줌. 가로 세로로 들어가는데 하나를 넣어주면 나머지 하나는 auto 해도됨*/
+            /*요새는 고해상도로 만들기 위해서 실제 크기보다 2배 크게 이미지를 만듬*/
+            background: url('images/sprite_spaceship.png') no-repeat 0 0 / auto 150px;
+            animation: spaceship-ani 1s infinite steps(17);  
+        }
+    </style>
+</head>
+<body>
+    <div class="spaceship"></div>
+</body>
+</html>

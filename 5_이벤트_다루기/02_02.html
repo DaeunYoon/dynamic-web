@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/02_02.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="stage">
+        <div class="ilbuni"></div>
+        <div class="ilbuni"></div>
+        <div class="ilbuni"></div>
+    </div>
+    
+    <script>
+        (function(){
+            // const ilbunis = document.querySelectorAll('.ilbuni');
+
+            // for(let i = 0; i < ilbunis.length; i++) {
+            //     ilbunis[i].addEventListener('click', clickHandler);
+            // }
+
+            /*이벤트 위임*/
+            const stage = document.querySelector('.stage');
+            function clickHandler(e) {
+                // this.parentNode.removeChild(this);
+                if(e.target.classList.contains('ilbuni'))
+                   this.removeChild(e.target);
+            }
+
+            stage.addEventListener('click', clickHandler);
+        })();
+    </script>
+</body>
+</html>

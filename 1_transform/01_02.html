@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        @keyframes sample-ani {
+            0% {
+                /*이동 X*/
+                transform: translate(0, 0);
+            }
+            50% {
+                transform: translate(300px, 0);
+            }
+            100% {
+                transform: translate(400px, 500px);
+            }
+            
+        }
+        .box {
+            /*flex로 글자 가운데 정렬*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 200px;
+            border: solid 2px #000;
+            background-color: #fff000;
+            animation: sample-ani 2s linear 2 alternate;
+        }
+
+        .box:hover{
+            animation-play-state: paused ;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animation</h1>
+    <div class="box">box</div>
+</body>
+</html>

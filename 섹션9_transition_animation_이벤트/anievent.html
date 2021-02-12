@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition/Animation Event</title>
+    <style>
+        @keyframes ball-ani {
+            from {
+                transform: translate(0,0);
+            }
+            to {
+                transform: translate(200px, 200px);
+            }
+        }
+
+        .ball { 
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            margin: -15px 0px -15px;
+            border-radius: 50%;
+            background: red;
+            /* transition: 1s; */
+            animation: ball-ani 1s 3 alternate forwards;
+        }
+
+        .ball.end {
+            border: 5px solid #fff000;
+        }
+    </style>
+</head>
+<body>
+    <div class="ball"></div>
+
+    <script>
+        // (function(){
+        //     const ballElem = document.querySelector('.ball');
+
+        //     window.addEventListener('click', function(e) {
+        //         console.log(e.clientX, e.clientY);
+        //         ballElem.style.transform= 'translate(' + e.clientX+ 'px ,' + e.clientY +'px)';
+        //     });
+        // })();
+
+        (function() {
+            const ballElem = document.querySelector('.ball');
+
+            ballElem.addEventListener('animationend', function() {
+                ballElem.classList.add('end');
+            })
+        })();
+    </script>
+</body>
+</html>

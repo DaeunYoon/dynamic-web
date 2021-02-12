@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <style>
+        .card {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 150px;
+            border-radius: 10px;
+            font-size: 2rem;
+            font-weight: 800;
+            border: solid 1px yellowgreen;
+            margin: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        (function() {
+            function Card(number, color) {
+                this.number = number;
+                this.color = color;
+                this.init();
+            }
+
+            Card.prototype = {
+                constructor: Card,
+                init: function() {
+                    const Elem = document.createElement('div');
+                    Elem.classList.add('card');
+                    Elem.style.background = this.color;
+                    Elem.innerHTML = this.number;
+                    document.body.appendChild(Elem);
+                }
+            }
+
+            const card1 = new Card(10, 'blue');
+            const card2 = new Card(3, 'red');
+        })();
+
+    </script>
+</body>
+</html>

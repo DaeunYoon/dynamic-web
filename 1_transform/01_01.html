@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Web</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <style>
+        .box-container {
+            display: flex;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            /* gba alpha value : transparent */
+            background: rgba(255,255,0, 0.7);
+            transition: 1s cubic-bezier(0.41, 0.57, 0, 1.58);;
+        }
+        .box:hover{
+            /* transform: scale(2) rotate(45deg); */
+            width: 200px;
+            /* transform-origin: 30% 80%; */
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Transform</h1>
+
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt rerum asperiores aliquam laudantium repellat quidem laborum et odio ipsam tempore. Nisi doloribus id natus, sequi ea nostrum, consequatur officia laborum architecto a nam beatae, laudantium libero aut accusamus facere corporis optio repudiandae excepturi voluptas adipisci esse? Unde alias voluptas non hic, quas ipsum cupiditate officia culpa ea quaerat nostrum consequatur modi odit quidem perspiciatis saepe sunt cumque voluptatum in, quae esse corporis nulla odio? Minima eaque delectus porro, harum ullam necessitatibus aspernatur blanditiis nesciunt quis adipisci odio, sed recusandae dolor dolore, obcaecati sint facere tempore neque molestias aut. Sit, accusamus?
+    </p>
+    <div class="box-container">
+        <div class="box">A</div>
+        <div class="box">B</div>
+        <div class="box">C</div>
+        <div class="box">D</div>
+        <div class="box">E</div>
+    </div>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt rerum asperiores aliquam laudantium repellat quidem laborum et odio ipsam tempore. Nisi doloribus id natus, sequi ea nostrum, consequatur officia laborum architecto a nam beatae, laudantium libero aut accusamus facere corporis optio repudiandae excepturi voluptas adipisci esse? Unde alias voluptas non hic, quas ipsum cupiditate officia culpa ea quaerat nostrum consequatur modi odit quidem perspiciatis saepe sunt cumque voluptatum in, quae esse corporis nulla odio? Minima eaque delectus porro, harum ullam necessitatibus aspernatur blanditiis nesciunt quis adipisci odio, sed recusandae dolor dolore, obcaecati sint facere tempore neque molestias aut. Sit, accusamus?
+    </p>
+</body>
+</html>
