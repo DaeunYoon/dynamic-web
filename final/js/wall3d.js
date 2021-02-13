@@ -2,6 +2,7 @@
   const stageElem = document.querySelector(".stage");
   const houseElem = document.querySelector(".house");
   const progElem = document.querySelector(".progress-bar");
+  const butElem = document.querySelector(".buttons");
   let maxScrollVal = 0;
   let mousePos = { x: 0, y: 0 };
 
@@ -25,6 +26,22 @@
     stageElem.style.transform = `rotateX(${mousePos.y * 5}deg) rotateY(${
       mousePos.x * 5
     }deg)`;
+  });
+
+  stageElem.addEventListener("click", function (e) {
+    const speed = Math.random() * 0.5 + 0.2;
+    new Character({
+      xPos: (e.clientX / window.innerWidth) * 100,
+      speed: speed,
+    });
+  });
+
+  butElem.addEventListener("click", function (e) {
+    if (e.target.classList.contains("ilbuni")) {
+      document.body.setAttribute("data-char", "ilbuni");
+    } else {
+      document.body.setAttribute("data-char", "ragirl");
+    }
   });
 
   resizeHandler();

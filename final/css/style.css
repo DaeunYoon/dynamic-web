@@ -33,6 +33,10 @@ body {
   transition: background 0.5s;
 }
 
+body[data-char="ragirl"] {
+  background: #ffae00;
+}
+
 .world {
   position: fixed;
   left: 0;
@@ -338,4 +342,46 @@ body[data-char="ragirl"] .character-leg-left .face-front {
 }
 body[data-char="ragirl"] .character-leg-left .face-back {
   background-image: url("../images/ragirl_leg_0.png");
+}
+
+.buttons {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  right: 5px;
+  z-index: 120;
+}
+
+.char-button {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+  border: none;
+}
+
+.char-button.ilbuni {
+  background-image: url("../images/ilbuni_head_front.png");
+  background-size: 36px auto;
+}
+.char-button.ragirl {
+  background-image: url("../images/ragirl_head_front.png");
+  /*transparent*/
+  /* opacity: 0.5; */
+}
+
+body[data-char="ilbuni"] .char-button.ragirl,
+body[data-char="ragirl"] .char-button.ilbuni {
+  opacity: 0.5;
+}
+
+body[data-char="ilbuni"] .char-button.ilbuni,
+body[data-char="ragirl"] .char-button.ragirl {
+  opacity: 1;
 }
